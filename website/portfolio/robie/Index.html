@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to my Portfolio</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Tahoma',Verdana;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  color:white;
+  overflow-x:hidden;
+  background: linear-gradient(270deg, #1f1f1f, #3a3a3a, #3d5f6d, #0f2027);
+  background-size: 800% 800%;
+  animation: gradientMove 10s ease infinite;
+  position:relative;
+}
+
+
+body::before,
+body::after{
+  content:"";
+  position:absolute;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:0.5;
+}
+
+body::before{
+  background:#6d2c2e;
+  top:10%;
+  left:10%;
+  animation:blobMove 12s infinite alternate;
+}
+
+body::after{
+  background:rgb(161, 207, 245);
+  bottom:10%;
+  right:10%;
+  animation:blobMove 10s infinite alternate;
+}
+
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+@keyframes blobMove{
+  0%{transform:translate(0,0);}
+  100%{transform:translate(50px,-50px);}
+}
+
+@keyframes rippleEffect{
+  to{
+    transform:scale(4);
+    opacity:0;
+  }
+}
+
+/* NAV */
+.nav{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  padding:15px;
+  backdrop-filter:blur(10px);
+  background:rgba(131, 128, 128, 0.05);
+  position:sticky;
+  top:0;
+}
+
+.nav a{
+  color:white;
+  text-decoration:none;
+  font-size:13px;
+}
+
+/* HERO */
+.hero{
+  display:flex;
+  justify-content:space-between;
+  padding:40px 20px;
+}
+
+.hero-img{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  overflow:hidden;
+}
+
+.hero-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* GLASS */
+.glass{
+  background:rgba(131, 131, 131, 0.08);
+  backdrop-filter:blur(15px);
+  border-radius:20px;
+  margin:15px;
+  padding:20px;
+}
+
+.title{
+  text-align:center;
+  margin-top:60px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+.skills{
+  display:flex;
+  gap:10px;
+}
+
+.skills div{
+  width:50%;
+}
+
+/* RIPPLE */
+.ripple{
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+}
+
+.ripple span{
+  position:absolute;
+  border-radius:50%;
+  transform:scale(0);
+  background:rgba(83, 55, 55, 0.4);
+  animation:rippleEffect 0.6s linear;
+  pointer-events:none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <a href="#home" class="ripple">Home</a>
+  <a href="#about" class="ripple">About</a>
+  <a href="#skills" class="ripple">Skills</a>
+  <a href="#interest" class="ripple">Interest</a>
+  <a href="#experience" class="ripple">Experience</a>
+  <a href="#contact" class="ripple">Contact</a>
+</div>
+
+<!-- HERO -->
+<div id="home" class="hero">
+  <div>
+    <h1>I'am Robie Ghe F. Perez</h1>
+    <p>IT Student | Web Developer | Game Developer</p>
+  </div>
+
+  <div class="hero-img">
+    <img src="pic.jfif" alt="profile">
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="title">ABOUT ME</div>
+<div class="glass ripple">
+  I am Robie Ghe F. Perez 1st yr student a student of UdD passionate about web development and game design. I enjoy creating interactive games and I’d like to do expand my knowledge about on my major cybersecurity system how to I can track the hacker.
+</div>
+
+<!-- SKILLS -->
+<div id="skills" class="title">SKILLS</div>
+<div class="glass skills ripple">
+  <div>
+    <b>Technical</b><br><br>
+    • Java / Python<br>
+    • HTML & CSS<br>
+    • Figma
+  </div>
+
+  <div>
+    <b>Soft Skills</b><br><br>
+    • Problem Solving<br>
+    • Creativity
+  </div>
+</div>
+
+<!-- INTEREST -->
+<div id="interest" class="title">INTEREST</div>
+<div class="glass ripple">
+  <ul>
+    <li>Gaming</li>
+    <li>Coding</li>
+    <li>Designing</li>
+    <li>Listening Music</li>
+    <li>Drawing</li>
+  </ul>
+</div>
+
+<!-- EXPERIENCE -->
+<div id="experience" class="title">EXPERIENCE</div>
+<div class="glass ripple">
+  Student projects in web development, web design and from the past year I'am one of the representative of online in international, the game is called PUBGM
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="title">CONTACT</div>
+<div class="glass ripple">
+  <p>Facebook: https://web.facebook.com/robieghe.perez.2o</p>
+  <p>Email: adaiki096@gmail.com</p>
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+document.querySelectorAll('.ripple').forEach(el => {
+  el.addEventListener('click', function(e){
+    const circle = document.createElement("span");
+    const diameter = Math.max(this.clientWidth, this.clientHeight);
+    const radius = diameter / 2;
+
+    circle.style.width = circle.style.height = diameter + "px";
+    circle.style.left = (e.offsetX - radius) + "px";
+    circle.style.top = (e.offsetY - radius) + "px";
+
+    const existing = this.querySelector("span");
+    if(existing) existing.remove();
+
+    this.appendChild(circle);
+  });
+});
+</script>
+
+</body>
+</html>
+web.facebook.com
